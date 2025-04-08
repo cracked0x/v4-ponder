@@ -28,6 +28,14 @@ export const pool = onchainTable("pool", (t) => ({
   hooks: t.hex().notNull(),
   chainId: t.integer().notNull(),
   creationBlock: t.integer().notNull(),
+  // to be added
+  liquidity: t.bigint().notNull(), // modification in modifyLiquidity, swap
+  sqrtPriceX96: t.bigint().notNull(), // modification in swap
+  tick: t.integer().notNull(), // modification in swap
+  // token0 per token1
+  token0Price: t.numeric().notNull(), // modification in swap
+  // token1 per token0
+  token1Price: t.numeric().notNull(), // modification in swap
 }),
   (table) => ({
     pk: primaryKey({ columns: [table.poolId, table.chainId] }),
